@@ -25,9 +25,11 @@ public class PagoTarjeta implements Pago {
 
 	@Override
 	public void imprimirRecibo() {
+		System.out.println("\n=================================");
 		System.out.println("Número de tarjeta: " + numeroTarjeta);
         System.out.println("Fecha de pago: " + fechaPago);
         System.out.println("Monto pagado: " + montoPagado);
+        System.out.println("=================================");
 	}
 
 }
