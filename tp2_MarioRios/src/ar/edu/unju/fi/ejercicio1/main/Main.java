@@ -89,10 +89,20 @@ public class Main {
         System.out.println("Elija una opción:");
         int categoriaIndex = sc.nextInt() - 1;
         sc.nextLine();  // Limpiar el buffer del scanner
+        
+        
+        // PARTE EXCLUSIVAMENTE CREADA PARA EL TP-2 PARTE 2
+        System.out.println("¿Está disponible el producto? (true/false):");
+        boolean estado = sc.nextBoolean();
+        sc.nextLine(); // Limpiar el buffer del scanner
 
-        Producto producto = new Producto(codigo, descripcion, precioUnitario, 
-                                         OrigenFabricacion.values()[origenIndex], 
-                                         Categoria.values()[categoriaIndex]);
+        Producto producto = new Producto(codigo, descripcion, precioUnitario,
+                                         Producto.OrigenFabricacion.values()[origenIndex],
+                                         Producto.Categoria.values()[categoriaIndex],
+                                         estado);
+        // ESTADO NO AFECTA A LAS DEMÁS OPCIONES DE ESTE EJERCICIO
+        
+        
         productos.add(producto);
         System.out.println("Producto creado con éxito.");
         
