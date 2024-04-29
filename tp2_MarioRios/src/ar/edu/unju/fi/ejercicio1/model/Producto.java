@@ -14,14 +14,17 @@ public class Producto {
     private double precioUnitario;
     private OrigenFabricacion origenFabricacion;
     private Categoria categoria;
+    private boolean estado; // Nuevo atributo
     
 	public Producto(String codigo, String descripcion, double precioUnitario, OrigenFabricacion origenFabricacion,
-			Categoria categoria) {
+			Categoria categoria, boolean estado) {
 		this.codigo = codigo;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
 		this.origenFabricacion = origenFabricacion;
 		this.categoria = categoria;
+        this.estado = estado;
+
 	}
 
 	public String getCodigo() {
@@ -64,5 +67,22 @@ public class Producto {
 		this.categoria = categoria;
 	}
 	
+	public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    @Override
+    public String toString() {
+        return "Código: " + codigo +
+               ", Descripción: " + descripcion +
+               ", Precio unitario: $" + precioUnitario +
+               ", Origen de fabricación: " + origenFabricacion +
+               ", Categoría: " + categoria +
+               ", Estado: " + (estado ? "Disponible" : "No disponible");
+    }
     
 }
