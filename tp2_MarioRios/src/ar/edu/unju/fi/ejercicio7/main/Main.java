@@ -36,13 +36,13 @@ public class Main {
                     incrementarPrecios(productos);
                     break;
                 case 4:
-                    //mostrarProductosElectrohogarDisponibles(productos);
+                    mostrarProductosElectrohogarDisponibles(productos);
                     break;
                 case 5:
-                    //ordenarProductosPorPrecioDescendente(productos);
+                    ordenarProductosPorPrecioDescendente(productos);
                     break;
                 case 6:
-                    //mostrarNombresEnMayusculas(productos);
+                    mostrarNombresEnMayusculas(productos);
                     break;
                 case 7:
                     System.out.println("Saliendo del programa...");
@@ -143,6 +143,28 @@ public class Main {
         productosIncrementados.forEach(System.out::println);
     }
 	
+	private static void mostrarProductosElectrohogarDisponibles(List<Producto> productos) {
+        System.out.println("\nProductos de categoría Electrohogar disponibles:");
+        Predicate<Producto> predicate = p -> p.getCategoria() == Producto.Categoria.ELECTROHOGAR && p.isEstado();
+        productos.stream()
+                .filter(predicate)
+                .forEach(System.out::println);
+    }
 	
+	private static void ordenarProductosPorPrecioDescendente(List<Producto> productos) {
+        System.out.println("\nProductos ordenados por precio de forma descendente:");
+        Comparator<Producto> comparator = Comparator.comparing(Producto::getPrecioUnitario).reversed();
+        productos.stream()
+                .sorted(comparator)
+                .forEach(System.out::println);
+    }
+	
+	private static void mostrarNombresEnMayusculas(List<Producto> productos) {
+        System.out.println("\nNombres de productos en mayúsculas:");
+        Function<Producto, String> mapper = p -> p.getDescripcion().toUpperCase();
+        productos.stream()
+                .map(mapper)
+                .forEach(System.out::println);
+    }
 
 }
